@@ -7,7 +7,7 @@ def main():
     data = jsonOp.readJson("bin/turingmachine.json")
 
     tapes = (
-        "__12ABC__",
+        "__1THE_QUICK_BROWN_FOX_JUMPS_OVER_THE_LAZY_DOG__",
         "*ABCDEFGHIJKLMNOPQRSTUVWXYZ_"
     )
     
