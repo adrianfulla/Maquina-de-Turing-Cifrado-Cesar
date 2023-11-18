@@ -1,12 +1,11 @@
 import json
 
 class JsonOperator():
-    def readJson(filename):
+    def readJson(self, filename):
         try:
             with open(filename, 'r') as json_file:
                 data = json.load(json_file)
-                print("Data read from JSON file:")
-                print(json.dumps(data, indent=4))
+                return data
         except FileNotFoundError:
             print(f"File '{filename}' not found. Please make sure the file exists.")
         except json.JSONDecodeError:
