@@ -103,9 +103,9 @@ class TuringMachine:
 
             if not self.step():
                 if self.state in self.accept_states:
-                    print(f"La cadena SI fue aceptada en {self.steps}")
+                    print(f"La cadena SI fue aceptada en {self.steps} pasos")
                 else:
-                    print(f"La cadena NO fue aceptada {self.steps}")
+                    print(f"La cadena NO fue aceptada {self.steps} pasos")
                 return self.tapes[0]
             
             sleep(0.05)

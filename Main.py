@@ -1,5 +1,6 @@
 from bin.TuringMachine import TuringMachine 
 from bin.JsonOperator import JsonOperator
+import sys
             
      
 def cypher(n, expression):
@@ -62,8 +63,30 @@ def decypher(n, expression):
     return result
     
 if __name__ == '__main__':
-    n = 25
-    expression = "The quick brown fox jumps over the lazy dog"
+    # n = 25
+    # expression = "The quick brown fox jumps over the lazy dog"
      
-    res = cypher(n=n, expression=expression)
-    deres = decypher(n=n, expression=res)
+    # res = cypher(n=n, expression=expression)
+    # deres = decypher(n=n, expression=res)
+    while True:
+        print("--Maquina de Turing Cifrado y Descifrado Cesar--")
+        print('''
+--MENU--
+1. Cifrar
+2. Descifrar
+3. Salir
+''')
+        option = input("Que desea realizar? \n")
+        
+        if option in ["1", "2"]:
+            n = input("Ingrese el numero por el cual desea desplazar: \n")
+            n = int(n) % 26
+            if option == "1":
+                exp = input("Ingrese la expresion a cifrar: \n")
+                cypher(n, exp)
+            if option == "2":
+                exp = input("Ingrese la expresion a descifrar: \n")
+                decypher(n, exp)
+        elif option == "3":
+            print("Adios")
+            sys.exit()
