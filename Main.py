@@ -2,6 +2,7 @@ from bin.TuringMachine import TuringMachine
 from bin.JsonOperator import JsonOperator
 import sys
 import os
+import time
             
      
 def cypher(n, expression):
@@ -72,22 +73,39 @@ if __name__ == '__main__':
     while True:
         print("--Maquina de Turing Cifrado y Descifrado Cesar--")
         print('''
---MENU--
-1. Cifrar
-2. Descifrar
-3. Salir
-''')
+            --MENU--
+            1. Cifrar
+            2. Descifrar
+            3. Salir
+            ''')
         option = input("Que desea realizar? \n")
         
         if option in ["1", "2"]:
-            n = input("Ingrese el numero por el cual desea desplazar: \n")
-            n = int(n) % 26
-            if option == "1":
-                exp = input("Ingrese la expresion a cifrar: \n").strip(" ")
-                cypher(n, exp)
-            if option == "2":
-                exp = input("Ingrese la expresion a descifrar: \n").strip(" ")
-                decypher(n, exp)
+            print('''             
+1. Indicar un número
+2. Realizar todos los ROT.
+''')
+            q = input("¿Qué opción desea? ")
+            if q == '1':
+                n = input("Ingrese el numero por el cual desea desplazar: \n")
+                n = int(n) % 26
+                if option == "1":
+                    exp = input("Ingrese la expresion a cifrar: \n").strip(" ")
+                    cypher(n, exp)
+                if option == "2":
+                    exp = input("Ingrese la expresion a descifrar: \n").strip(" ")
+                    decypher(n, exp)
+            elif q == '2':
+                if q == "1":
+                    exp = input("Ingrese la expresion a cifrar: \n").strip(" ")
+                    for x in range(25):
+                        cypher(x+1, exp)
+                        time.sleep(3)
+                if q == "2":
+                    exp = input("Ingrese la expresion a descifrar: \n").strip(" ")
+                    for x in range(25):
+                        decypher(x+1, exp)
+                        time.sleep(3)
         elif option == "3":
             os.system('clear' if os.name == 'posix' else 'cls')
             print("Adios")
