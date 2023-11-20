@@ -1,6 +1,7 @@
 from bin.TuringMachine import TuringMachine 
 from bin.JsonOperator import JsonOperator
 import sys
+import os
             
      
 def cypher(n, expression):
@@ -28,7 +29,7 @@ def cypher(n, expression):
                        transitions)
     
     result = MT.run()
-    result = ''.join(result).replace(" ", "_")
+    result = ''.join(result).strip("_")
     pres = result.replace("_", " ")
     print(f"Expresion resultante: {pres}")
     return result
@@ -37,7 +38,7 @@ def decypher(n, expression):
     jsonOp = JsonOperator()
     data = jsonOp.readJson("bin/turingmachinedecypher.json")
 
-    expression = expression.upper().strip("_")
+    expression = expression.upper().replace(" ", "_")
 
     tapes = (
         f"__{str(n)}{expression}__",
@@ -82,11 +83,12 @@ if __name__ == '__main__':
             n = input("Ingrese el numero por el cual desea desplazar: \n")
             n = int(n) % 26
             if option == "1":
-                exp = input("Ingrese la expresion a cifrar: \n")
+                exp = input("Ingrese la expresion a cifrar: \n").strip(" ")
                 cypher(n, exp)
             if option == "2":
-                exp = input("Ingrese la expresion a descifrar: \n")
+                exp = input("Ingrese la expresion a descifrar: \n").strip(" ")
                 decypher(n, exp)
         elif option == "3":
+            os.system('clear' if os.name == 'posix' else 'cls')
             print("Adios")
             sys.exit()
