@@ -108,7 +108,7 @@ class TuringMachine:
                     print(f"La cadena NO fue aceptada {self.steps} pasos")
                 return self.tapes[0]
             
-            sleep(0.05)
+            sleep(0.03)
             
             
     def printStatus(self):
@@ -123,7 +123,7 @@ class TuringMachine:
                 
         exp = (f"Estado: {self.state}\nCinta 1: {cintas[0]}\nCinta 2: {cintas[1]}\nCinta 3: {cintas[2]}\n")
 
-        print(exp)
+        print(exp, end="\r")
         
         
         

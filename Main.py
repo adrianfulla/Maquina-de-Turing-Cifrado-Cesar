@@ -28,7 +28,7 @@ def cypher(n, expression):
                        transitions)
     
     result = MT.run()
-    result = ''.join(result).strip("_")
+    result = ''.join(result).replace(" ", "_")
     pres = result.replace("_", " ")
     print(f"Expresion resultante: {pres}")
     return result
