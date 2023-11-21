@@ -33,7 +33,7 @@ def cypher(n, expression):
     result = ''.join(result).strip("_")
     pres = result.replace("_", " ")
     print(f"Expresion resultante: {pres}")
-    return result
+    return pres
     
 def decypher(n, expression):
     jsonOp = JsonOperator()
@@ -81,11 +81,12 @@ if __name__ == '__main__':
         option = input("Que desea realizar? \n")
         
         if option in ["1", "2"]:
-            print('''             
+            print('''
 1. Indicar un número
 2. Realizar todos los ROT.
 ''')
             q = input("¿Qué opción desea? ")
+            resultadosRot = []
             if q == '1':
                 n = input("Ingrese el numero por el cual desea desplazar: \n")
                 n = int(n) % 26
@@ -99,13 +100,24 @@ if __name__ == '__main__':
                 if q == "1":
                     exp = input("Ingrese la expresion a cifrar: \n").strip(" ")
                     for x in range(25):
-                        cypher(x+1, exp)
+                        resultadosRot.append(cypher(x+1, exp))
                         time.sleep(3)
+                    for i in range(25, 0, -1):
+                        print("ROT " + str(i) + "\n")
+                        impresion = resultadosRot.pop(0)
+                        print(impresion)
                 if q == "2":
                     exp = input("Ingrese la expresion a descifrar: \n").strip(" ")
                     for x in range(25):
-                        decypher(x+1, exp)
+                        resultadosRot.append(decypher(x+1, exp))
                         time.sleep(3)
+                    for i in range(25, 0, -1):
+                        print("\n ROT " + str(i))
+                        impresion = resultadosRot.pop(0)
+                        print(impresion)
+
+
+
         elif option == "3":
             os.system('clear' if os.name == 'posix' else 'cls')
             print("Adios")
